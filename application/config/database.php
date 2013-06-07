@@ -45,13 +45,21 @@
 | the active record class
 */
 
-$active_group = 'default';
-$active_record = TRUE;
+$services_json = json_decode(getenv("VCAP_SERVICES"),true);
+$mysql_config = $services_json["mysql-5.1"][0]["credentials"];
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = '';
-$db['default']['password'] = '';
-$db['default']['database'] = '';
+//$db['default']['hostname'] = $_SERVER["DB1_HOST"];
+//$db['default']['port']     = $_SERVER["DB1_PORT"];
+//$db['default']['username'] = $_SERVER["DB1_USER"];
+//$db['default']['password'] = $_SERVER["DB1_PASS"];
+
+$db['default']['hostname'] = $mysql_config['hostname'];
+$db['default']['username'] = $mysql_config['user'];
+$db['default']['password'] = $mysql_config['password'];
+$db['default']['database'] = $mysql_config['name'];
+$db['default']['port']     = $mysql_config['port'];
+
+$db['default']['database'] = 'test';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;

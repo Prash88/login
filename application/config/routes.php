@@ -41,6 +41,12 @@
 $route['default_controller'] = "welcome";
 $route['404_override'] = '';
 
+$route['login'] = '/auth/login';
+$route['register'] = '/auth/register';
+$route['forgot_password'] = '/auth/forgot_password';
+$route['reset_password/(:any)/(:any)'] = '/auth/reset_password';
+$route['activate/(:any)/(:any)'] = '/auth/activate';
+$route['reset_email/(:any)/(:any)'] = '/auth/reset_email';
 
 /* End of file routes.php */
 /* Location: ./application/config/routes.php */
